@@ -1,0 +1,908 @@
+{
+  "schema_version": "1.0",
+  "provenance": "Authored synthetic product facts, UK page excerpts and answer fixtures. No live engine calls or retailer data.",
+  "method": {
+    "panel": "Four fixed shopper questions per product, two authored response fixtures per version and question. Each A/B pair uses the same prompt. Repeat numbers identify illustrative traces, not independent engine runs.",
+    "accuracy": "Exact match to the approved synthetic answer divided by all responses, including abstentions. This finite codebook applies only to the supplied fixtures.",
+    "citation_rate": "Responses naming a passage divided by all responses, including stale references.",
+    "valid_citation_rate": "Responses quoting the named passage in the presented version divided by all responses. A valid quote may be irrelevant or contradict the answer.",
+    "support_rate": "Correct answers with a valid citation containing the question's annotated evidence span divided by all responses.",
+    "limits": "This is a closed-book answer-grounding audit. Public engine inclusion, rank, citation frequency, stochastic variation and effects on shopping behaviour require independently collected evidence. Fixture differences are illustrative only."
+  },
+  "cases": {
+    "headphones": {
+      "name": "Arc One headphones",
+      "retailer": "Northline Electrical",
+      "business_question": "Will clearer battery and charging guidance help commuters choose the Arc One and add it to their basket?",
+      "revision": "Replace vague battery and charging copy with ANC-on and ANC-off limits, a timed top-up and a clear statement about USB-C audio.",
+      "interpretation": "The revised copy gives a reviewer evidence for each battery and charging answer. One correct example still lacks a citation. Use fresh engine observations to test whether assistants actually find and cite this page.",
+      "market": "UK · en-GB",
+      "versions": {
+        "A": {
+          "label": "Current page",
+          "passages": [
+            {
+              "id": "headphones-A-1",
+              "text": "Wireless over-ear headphones with active noise cancellation (ANC). Enjoy up to 40 hours between charges."
+            },
+            {
+              "id": "headphones-A-2",
+              "text": "Top up quickly over USB-C. An analogue cable is supplied for wired listening."
+            }
+          ]
+        },
+        "B": {
+          "label": "Revised page",
+          "passages": [
+            {
+              "id": "headphones-B-1",
+              "text": "With ANC on, rated battery life is up to 24 hours. With ANC off, rated battery life is up to 40 hours."
+            },
+            {
+              "id": "headphones-B-2",
+              "text": "A 10-minute top-up provides up to 3 hours of playback. USB-C is for charging only; use the supplied analogue cable for wired audio."
+            }
+          ]
+        }
+      },
+      "questions": [
+        {
+          "id": "anc-on",
+          "text": "How long can I listen with noise cancellation switched on?",
+          "truth": "Up to 24 hours with ANC on.",
+          "fact_id": "headphones/anc-on",
+          "evidence": {
+            "A": null,
+            "B": {
+              "passage_id": "headphones-B-1",
+              "quote": "With ANC on, rated battery life is up to 24 hours."
+            }
+          }
+        },
+        {
+          "id": "anc-off",
+          "text": "What is the maximum rated playback time with ANC off?",
+          "truth": "Up to 40 hours with ANC off.",
+          "fact_id": "headphones/anc-off",
+          "evidence": {
+            "A": null,
+            "B": {
+              "passage_id": "headphones-B-1",
+              "quote": "With ANC off, rated battery life is up to 40 hours."
+            }
+          }
+        },
+        {
+          "id": "top-up",
+          "text": "How much playback does a 10-minute charge provide?",
+          "truth": "Up to 3 hours of playback.",
+          "fact_id": "headphones/top-up",
+          "evidence": {
+            "A": null,
+            "B": {
+              "passage_id": "headphones-B-2",
+              "quote": "A 10-minute top-up provides up to 3 hours of playback."
+            }
+          }
+        },
+        {
+          "id": "usb-audio",
+          "text": "Can I listen to audio through the USB-C socket?",
+          "truth": "No. USB-C is for charging only.",
+          "fact_id": "headphones/usb-audio",
+          "evidence": {
+            "A": null,
+            "B": {
+              "passage_id": "headphones-B-2",
+              "quote": "USB-C is for charging only; use the supplied analogue cable for wired audio."
+            }
+          }
+        }
+      ],
+      "records": [
+        {
+          "question_id": "anc-on",
+          "version": "A",
+          "repeat": 1,
+          "answer": "Up to 40 hours with ANC on.",
+          "citation_id": "headphones-A-1",
+          "citation_quote": "Enjoy up to 40 hours between charges.",
+          "verdict": "incorrect",
+          "citation_valid": true,
+          "supported": false
+        },
+        {
+          "question_id": "anc-on",
+          "version": "A",
+          "repeat": 2,
+          "answer": "The supplied page does not establish this.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "abstain",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "anc-off",
+          "version": "A",
+          "repeat": 1,
+          "answer": "Up to 40 hours with ANC off.",
+          "citation_id": "headphones-A-1",
+          "citation_quote": "Enjoy up to 40 hours between charges.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": false
+        },
+        {
+          "question_id": "anc-off",
+          "version": "A",
+          "repeat": 2,
+          "answer": "Up to 40 hours with ANC off.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "correct",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "top-up",
+          "version": "A",
+          "repeat": 1,
+          "answer": "The supplied page does not establish this.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "abstain",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "top-up",
+          "version": "A",
+          "repeat": 2,
+          "answer": "Up to 10 hours of playback.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "incorrect",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "usb-audio",
+          "version": "A",
+          "repeat": 1,
+          "answer": "Yes. USB-C carries digital audio.",
+          "citation_id": "headphones-A-2",
+          "citation_quote": "Top up quickly over USB-C.",
+          "verdict": "incorrect",
+          "citation_valid": true,
+          "supported": false
+        },
+        {
+          "question_id": "usb-audio",
+          "version": "A",
+          "repeat": 2,
+          "answer": "The supplied page does not establish this.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "abstain",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "anc-on",
+          "version": "B",
+          "repeat": 1,
+          "answer": "Up to 24 hours with ANC on.",
+          "citation_id": "headphones-B-1",
+          "citation_quote": "With ANC on, rated battery life is up to 24 hours.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "anc-on",
+          "version": "B",
+          "repeat": 2,
+          "answer": "Up to 24 hours with ANC on.",
+          "citation_id": "headphones-B-1",
+          "citation_quote": "With ANC on, rated battery life is up to 24 hours.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "anc-off",
+          "version": "B",
+          "repeat": 1,
+          "answer": "Up to 40 hours with ANC off.",
+          "citation_id": "headphones-B-1",
+          "citation_quote": "With ANC off, rated battery life is up to 40 hours.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "anc-off",
+          "version": "B",
+          "repeat": 2,
+          "answer": "Up to 40 hours with ANC off.",
+          "citation_id": "headphones-B-1",
+          "citation_quote": "With ANC off, rated battery life is up to 40 hours.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "top-up",
+          "version": "B",
+          "repeat": 1,
+          "answer": "Up to 3 hours of playback.",
+          "citation_id": "headphones-B-2",
+          "citation_quote": "A 10-minute top-up provides up to 3 hours of playback.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "top-up",
+          "version": "B",
+          "repeat": 2,
+          "answer": "Up to 3 hours of playback.",
+          "citation_id": "headphones-B-2",
+          "citation_quote": "A 10-minute top-up provides up to 3 hours of playback.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "usb-audio",
+          "version": "B",
+          "repeat": 1,
+          "answer": "No. USB-C is for charging only.",
+          "citation_id": "headphones-B-2",
+          "citation_quote": "USB-C is for charging only; use the supplied analogue cable for wired audio.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "usb-audio",
+          "version": "B",
+          "repeat": 2,
+          "answer": "No. USB-C is for charging only.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "correct",
+          "citation_valid": false,
+          "supported": false
+        }
+      ],
+      "metrics": {
+        "A": {
+          "total": 8,
+          "correct": 2,
+          "incorrect": 3,
+          "abstain": 3,
+          "cited": 3,
+          "valid_citations": 3,
+          "supported": 0,
+          "accuracy": 0.25,
+          "citation_rate": 0.375,
+          "valid_citation_rate": 0.375,
+          "support_rate": 0.0
+        },
+        "B": {
+          "total": 8,
+          "correct": 8,
+          "incorrect": 0,
+          "abstain": 0,
+          "cited": 7,
+          "valid_citations": 7,
+          "supported": 7,
+          "accuracy": 1.0,
+          "citation_rate": 0.875,
+          "valid_citation_rate": 0.875,
+          "support_rate": 0.875
+        }
+      }
+    },
+    "monitor": {
+      "name": "Forma 27 monitor",
+      "retailer": "Field & Frame",
+      "business_question": "Does specifying USB-C power delivery and cable requirements reduce compatibility uncertainty enough to increase basket additions?",
+      "revision": "State the maximum USB-C power delivery, video protocol and included lead alongside the existing 27-inch screen size.",
+      "interpretation": "The revised port specification makes compatibility claims checkable. One example abstains and another points to a stale passage ID. The unchanged screen-size question provides a stable comparison.",
+      "market": "UK · en-GB",
+      "versions": {
+        "A": {
+          "label": "Current page",
+          "passages": [
+            {
+              "id": "monitor-A-1",
+              "text": "The screen measures 27 inches diagonally. A single USB-C connection keeps your desk tidy."
+            },
+            {
+              "id": "monitor-A-2",
+              "text": "A USB-C lead is supplied. Connect a compatible laptop for a simple desk setup."
+            }
+          ]
+        },
+        "B": {
+          "label": "Revised page",
+          "passages": [
+            {
+              "id": "monitor-B-1",
+              "text": "The screen measures 27 inches diagonally. The upstream USB-C port delivers up to 65 W to a compatible laptop."
+            },
+            {
+              "id": "monitor-B-2",
+              "text": "USB-C video requires DisplayPort Alt Mode on the laptop. A full-featured USB-C to USB-C cable supporting video and 65 W charging is supplied."
+            }
+          ]
+        }
+      },
+      "questions": [
+        {
+          "id": "power",
+          "text": "What is the highest charging power the monitor can supply to my laptop?",
+          "truth": "Up to 65 W.",
+          "fact_id": "monitor/power",
+          "evidence": {
+            "A": null,
+            "B": {
+              "passage_id": "monitor-B-1",
+              "quote": "The upstream USB-C port delivers up to 65 W to a compatible laptop."
+            }
+          }
+        },
+        {
+          "id": "video",
+          "text": "What must my laptop USB-C port support to show video on this monitor?",
+          "truth": "DisplayPort Alt Mode.",
+          "fact_id": "monitor/video",
+          "evidence": {
+            "A": null,
+            "B": {
+              "passage_id": "monitor-B-2",
+              "quote": "USB-C video requires DisplayPort Alt Mode on the laptop."
+            }
+          }
+        },
+        {
+          "id": "cable",
+          "text": "Does the included USB-C cable support both video and 65 W charging?",
+          "truth": "Yes. The supplied cable supports video and 65 W charging.",
+          "fact_id": "monitor/cable",
+          "evidence": {
+            "A": null,
+            "B": {
+              "passage_id": "monitor-B-2",
+              "quote": "A full-featured USB-C to USB-C cable supporting video and 65 W charging is supplied."
+            }
+          }
+        },
+        {
+          "id": "size",
+          "text": "How large is the screen, measured diagonally?",
+          "truth": "27 inches.",
+          "fact_id": "monitor/size",
+          "evidence": {
+            "A": {
+              "passage_id": "monitor-A-1",
+              "quote": "The screen measures 27 inches diagonally."
+            },
+            "B": {
+              "passage_id": "monitor-B-1",
+              "quote": "The screen measures 27 inches diagonally."
+            }
+          }
+        }
+      ],
+      "records": [
+        {
+          "question_id": "power",
+          "version": "A",
+          "repeat": 1,
+          "answer": "The supplied page does not establish this.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "abstain",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "power",
+          "version": "A",
+          "repeat": 2,
+          "answer": "Up to 100 W.",
+          "citation_id": "monitor-A-1",
+          "citation_quote": "A single USB-C connection keeps your desk tidy.",
+          "verdict": "incorrect",
+          "citation_valid": true,
+          "supported": false
+        },
+        {
+          "question_id": "video",
+          "version": "A",
+          "repeat": 1,
+          "answer": "Any charge-only USB-C port will work.",
+          "citation_id": "monitor-A-2",
+          "citation_quote": "Connect a compatible laptop for a simple desk setup.",
+          "verdict": "incorrect",
+          "citation_valid": true,
+          "supported": false
+        },
+        {
+          "question_id": "video",
+          "version": "A",
+          "repeat": 2,
+          "answer": "The supplied page does not establish this.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "abstain",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "cable",
+          "version": "A",
+          "repeat": 1,
+          "answer": "Yes. The supplied cable supports video and 65 W charging.",
+          "citation_id": "monitor-A-2",
+          "citation_quote": "A USB-C lead is supplied.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": false
+        },
+        {
+          "question_id": "cable",
+          "version": "A",
+          "repeat": 2,
+          "answer": "Yes. The supplied cable supports video and 65 W charging.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "correct",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "size",
+          "version": "A",
+          "repeat": 1,
+          "answer": "27 inches.",
+          "citation_id": "monitor-A-1",
+          "citation_quote": "The screen measures 27 inches diagonally.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "size",
+          "version": "A",
+          "repeat": 2,
+          "answer": "27 inches.",
+          "citation_id": "monitor-A-1",
+          "citation_quote": "The screen measures 27 inches diagonally.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "power",
+          "version": "B",
+          "repeat": 1,
+          "answer": "Up to 65 W.",
+          "citation_id": "monitor-B-1",
+          "citation_quote": "The upstream USB-C port delivers up to 65 W to a compatible laptop.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "power",
+          "version": "B",
+          "repeat": 2,
+          "answer": "Up to 65 W.",
+          "citation_id": "monitor-B-1",
+          "citation_quote": "The upstream USB-C port delivers up to 65 W to a compatible laptop.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "video",
+          "version": "B",
+          "repeat": 1,
+          "answer": "DisplayPort Alt Mode.",
+          "citation_id": "monitor-B-2",
+          "citation_quote": "USB-C video requires DisplayPort Alt Mode on the laptop.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "video",
+          "version": "B",
+          "repeat": 2,
+          "answer": "The supplied page does not establish this.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "abstain",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "cable",
+          "version": "B",
+          "repeat": 1,
+          "answer": "Yes. The supplied cable supports video and 65 W charging.",
+          "citation_id": "monitor-B-2",
+          "citation_quote": "A full-featured USB-C to USB-C cable supporting video and 65 W charging is supplied.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "cable",
+          "version": "B",
+          "repeat": 2,
+          "answer": "Yes. The supplied cable supports video and 65 W charging.",
+          "citation_id": "monitor-A-2",
+          "citation_quote": "A full-featured USB-C to USB-C cable supporting video and 65 W charging is supplied.",
+          "verdict": "correct",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "size",
+          "version": "B",
+          "repeat": 1,
+          "answer": "27 inches.",
+          "citation_id": "monitor-B-1",
+          "citation_quote": "The screen measures 27 inches diagonally.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "size",
+          "version": "B",
+          "repeat": 2,
+          "answer": "27 inches.",
+          "citation_id": "monitor-B-1",
+          "citation_quote": "The screen measures 27 inches diagonally.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        }
+      ],
+      "metrics": {
+        "A": {
+          "total": 8,
+          "correct": 4,
+          "incorrect": 2,
+          "abstain": 2,
+          "cited": 5,
+          "valid_citations": 5,
+          "supported": 2,
+          "accuracy": 0.5,
+          "citation_rate": 0.625,
+          "valid_citation_rate": 0.625,
+          "support_rate": 0.25
+        },
+        "B": {
+          "total": 8,
+          "correct": 7,
+          "incorrect": 0,
+          "abstain": 1,
+          "cited": 7,
+          "valid_citations": 6,
+          "supported": 6,
+          "accuracy": 0.875,
+          "citation_rate": 0.875,
+          "valid_citation_rate": 0.75,
+          "support_rate": 0.75
+        }
+      }
+    },
+    "speaker": {
+      "name": "Tide Mini speaker",
+      "retailer": "Northline Electrical",
+      "business_question": "Does qualified wording about water resistance and battery life help shoppers choose the Tide Mini without overstating what it can do?",
+      "revision": "Give the water-resistance rating and use limits, qualify the battery claim by volume, and keep the charging connector explicit.",
+      "interpretation": "A revised-page example cites the actual warning but reverses its meaning. Citation presence alone would miss this error. Before publication, a content owner should check this question across independent live answers.",
+      "market": "UK · en-GB",
+      "versions": {
+        "A": {
+          "label": "Current page",
+          "passages": [
+            {
+              "id": "speaker-A-1",
+              "text": "Take your water-resistant speaker outdoors. The rated battery life is up to 12 hours."
+            },
+            {
+              "id": "speaker-A-2",
+              "text": "Recharge the speaker over USB-C. A compact design fits neatly in a day bag."
+            }
+          ]
+        },
+        "B": {
+          "label": "Revised page",
+          "passages": [
+            {
+              "id": "speaker-B-1",
+              "text": "The enclosure has an IPX5 water-resistance rating. It can handle water jets but must not be submerged."
+            },
+            {
+              "id": "speaker-B-2",
+              "text": "Rated battery life is up to 12 hours at 50% volume. Recharge the speaker over USB-C."
+            }
+          ]
+        }
+      },
+      "questions": [
+        {
+          "id": "rating",
+          "text": "What is the speaker's water-resistance rating?",
+          "truth": "IPX5.",
+          "fact_id": "speaker/rating",
+          "evidence": {
+            "A": null,
+            "B": {
+              "passage_id": "speaker-B-1",
+              "quote": "The enclosure has an IPX5 water-resistance rating."
+            }
+          }
+        },
+        {
+          "id": "submersion",
+          "text": "Can this speaker be submerged in water?",
+          "truth": "No. It must not be submerged.",
+          "fact_id": "speaker/submersion",
+          "evidence": {
+            "A": null,
+            "B": {
+              "passage_id": "speaker-B-1",
+              "quote": "It can handle water jets but must not be submerged."
+            }
+          }
+        },
+        {
+          "id": "battery",
+          "text": "At what volume is the 12-hour battery figure rated?",
+          "truth": "At 50% volume.",
+          "fact_id": "speaker/battery",
+          "evidence": {
+            "A": null,
+            "B": {
+              "passage_id": "speaker-B-2",
+              "quote": "Rated battery life is up to 12 hours at 50% volume."
+            }
+          }
+        },
+        {
+          "id": "port",
+          "text": "Which connector recharges the speaker?",
+          "truth": "USB-C.",
+          "fact_id": "speaker/port",
+          "evidence": {
+            "A": {
+              "passage_id": "speaker-A-2",
+              "quote": "Recharge the speaker over USB-C."
+            },
+            "B": {
+              "passage_id": "speaker-B-2",
+              "quote": "Recharge the speaker over USB-C."
+            }
+          }
+        }
+      ],
+      "records": [
+        {
+          "question_id": "rating",
+          "version": "A",
+          "repeat": 1,
+          "answer": "The supplied page does not establish this.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "abstain",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "rating",
+          "version": "A",
+          "repeat": 2,
+          "answer": "IP67.",
+          "citation_id": "speaker-A-1",
+          "citation_quote": "Take your water-resistant speaker outdoors.",
+          "verdict": "incorrect",
+          "citation_valid": true,
+          "supported": false
+        },
+        {
+          "question_id": "submersion",
+          "version": "A",
+          "repeat": 1,
+          "answer": "Yes. It can be submerged.",
+          "citation_id": "speaker-A-1",
+          "citation_quote": "Take your water-resistant speaker outdoors.",
+          "verdict": "incorrect",
+          "citation_valid": true,
+          "supported": false
+        },
+        {
+          "question_id": "submersion",
+          "version": "A",
+          "repeat": 2,
+          "answer": "The supplied page does not establish this.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "abstain",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "battery",
+          "version": "A",
+          "repeat": 1,
+          "answer": "At 50% volume.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "correct",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "battery",
+          "version": "A",
+          "repeat": 2,
+          "answer": "At full volume.",
+          "citation_id": null,
+          "citation_quote": null,
+          "verdict": "incorrect",
+          "citation_valid": false,
+          "supported": false
+        },
+        {
+          "question_id": "port",
+          "version": "A",
+          "repeat": 1,
+          "answer": "USB-C.",
+          "citation_id": "speaker-A-2",
+          "citation_quote": "Recharge the speaker over USB-C.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "port",
+          "version": "A",
+          "repeat": 2,
+          "answer": "USB-C.",
+          "citation_id": "speaker-A-2",
+          "citation_quote": "Recharge the speaker over USB-C.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "rating",
+          "version": "B",
+          "repeat": 1,
+          "answer": "IPX5.",
+          "citation_id": "speaker-B-1",
+          "citation_quote": "The enclosure has an IPX5 water-resistance rating.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "rating",
+          "version": "B",
+          "repeat": 2,
+          "answer": "IPX5.",
+          "citation_id": "speaker-B-1",
+          "citation_quote": "The enclosure has an IPX5 water-resistance rating.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "submersion",
+          "version": "B",
+          "repeat": 1,
+          "answer": "No. It must not be submerged.",
+          "citation_id": "speaker-B-1",
+          "citation_quote": "It can handle water jets but must not be submerged.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "submersion",
+          "version": "B",
+          "repeat": 2,
+          "answer": "Yes. It can be submerged.",
+          "citation_id": "speaker-B-1",
+          "citation_quote": "It can handle water jets but must not be submerged.",
+          "verdict": "incorrect",
+          "citation_valid": true,
+          "supported": false
+        },
+        {
+          "question_id": "battery",
+          "version": "B",
+          "repeat": 1,
+          "answer": "At 50% volume.",
+          "citation_id": "speaker-B-2",
+          "citation_quote": "Rated battery life is up to 12 hours at 50% volume.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "battery",
+          "version": "B",
+          "repeat": 2,
+          "answer": "At 50% volume.",
+          "citation_id": "speaker-B-2",
+          "citation_quote": "Recharge the speaker over USB-C.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": false
+        },
+        {
+          "question_id": "port",
+          "version": "B",
+          "repeat": 1,
+          "answer": "USB-C.",
+          "citation_id": "speaker-B-2",
+          "citation_quote": "Recharge the speaker over USB-C.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        },
+        {
+          "question_id": "port",
+          "version": "B",
+          "repeat": 2,
+          "answer": "USB-C.",
+          "citation_id": "speaker-B-2",
+          "citation_quote": "Recharge the speaker over USB-C.",
+          "verdict": "correct",
+          "citation_valid": true,
+          "supported": true
+        }
+      ],
+      "metrics": {
+        "A": {
+          "total": 8,
+          "correct": 3,
+          "incorrect": 3,
+          "abstain": 2,
+          "cited": 4,
+          "valid_citations": 4,
+          "supported": 2,
+          "accuracy": 0.375,
+          "citation_rate": 0.5,
+          "valid_citation_rate": 0.5,
+          "support_rate": 0.25
+        },
+        "B": {
+          "total": 8,
+          "correct": 7,
+          "incorrect": 1,
+          "abstain": 0,
+          "cited": 8,
+          "valid_citations": 8,
+          "supported": 6,
+          "accuracy": 0.875,
+          "citation_rate": 1.0,
+          "valid_citation_rate": 1.0,
+          "support_rate": 0.75
+        }
+      }
+    }
+  }
+}

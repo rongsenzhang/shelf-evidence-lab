@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "title": "Can a product card answer the shopper?",
+  "date": "2026-11-23",
+  "product": "Logitech MX Keys Mini for Business · UK · 920-010611",
+  "source_label": "Logitech UK · business edition specifications and box contents",
+  "source_url": "https://www.logitech.com/en-gb/products/keyboards/mx-keys-mini-for-business.920-010611.html",
+  "protocol": "Two fresh, separate Codex reader sessions each received one analyst-written card and the same four questions in the same order. They had no web tools in use and were instructed to answer from the card, cite a sentence ID, or abstain. One response batch per card, captured on 23 November 2026. Readers saw only their own card. Outputs below are verbatim.",
+  "limitations": "One keyboard and one model response batch per card; no sampling controls, version pinning or independent human grading. Both cards are study stimuli based on Logitech UK specifications. The extra facts and longer passage change together. This measures answerability with a supplied source. Public-engine retrieval, competitive citations, referral traffic and shopper behaviour were outside this run.",
+  "variants": {
+    "A": "[S1] The MX Keys Mini for Business is a compact wireless keyboard. [S2] It supports Bluetooth Low Energy and the Logi Bolt receiver.",
+    "B": "[S1] The MX Keys Mini for Business is a compact wireless keyboard. [S2] It supports Bluetooth Low Energy and the Logi Bolt receiver. [S3] The business pack supplies a USB-A Logi Bolt receiver in the box. [S4] Easy-Switch lets you choose between a maximum of three paired devices."
+  },
+  "instruction": "You are a shopper-answer reader in a source-only evaluation. Do not use any tools, web, prior product knowledge, or other data. Answer the four questions using only the supplied product card. For each answer, include the supporting bracketed sentence ID or explicitly write 'Not specified in this card.' if the supplied card cannot answer. Keep each answer to one sentence. Return the four numbered answers only in your final response.",
+  "items": [
+    {"id":"receiver","question":"Does the business pack include a receiver, or do I need to buy one separately?","expected":"The business pack includes a USB-A Logi Bolt receiver. A lists compatibility only. B gives the pack contents.","A":{"answer":"Not specified in this card.","grade":"Correct abstention"},"B":{"answer":"The business pack includes a USB-A Logi Bolt receiver. [S3]","grade":"Supported answer"}},
+    {"id":"devices","question":"How many devices can I switch between?","expected":"Up to three devices. Only B supplies the limit.","A":{"answer":"Not specified in this card.","grade":"Correct abstention"},"B":{"answer":"You can switch between up to three paired devices. [S4]","grade":"Supported answer"}},
+    {"id":"bluetooth","question":"Can I use Bluetooth Low Energy?","expected":"Yes. Both cards provide this fact.","A":{"answer":"Yes, the keyboard supports Bluetooth Low Energy [S2].","grade":"Supported answer"},"B":{"answer":"Yes, the keyboard supports Bluetooth Low Energy. [S2]","grade":"Supported answer"}},
+    {"id":"rating","question":"Does this keyboard have a waterproof rating?","expected":"Abstain. Neither study card supplies an ingress protection rating.","A":{"answer":"Not specified in this card.","grade":"Correct abstention"},"B":{"answer":"Not specified in this card.","grade":"Correct abstention"}}
+  ]
+}
